@@ -1,0 +1,102 @@
+{
+  "_meta": {
+    "version": "1.0",
+    "date": "2026-04-17",
+    "source": "BSYLCXX training set 9,101 neonates, top-200 diagnosis phrases + ICD-10 P chapter mapping",
+    "purpose": "P1 neonatal multi-disease outcome prediction - diagnosis normalization dictionary"
+  },
+  "p1_heads": {
+    "jaundice": {
+      "icd10": "P59",
+      "surface_forms": [
+        "新生儿高胆红素血症", "高胆红素血症", "新生儿黄疸", "黄疸",
+        "新生儿ABO溶血性黄疸", "ABO溶血", "Rh溶血", "病理性黄疸",
+        "母乳性黄疸", "新生儿溶血性黄疸", "溶血性黄疸", "胆汁淤积",
+        "新生儿胆汁淤积", "直接胆红素升高", "高间接胆红素血症"
+      ],
+      "exclude_attitudes": ["suspected", "negated"]
+    },
+    "chd": {
+      "icd10": "Q20-Q24",
+      "surface_forms": [
+        "先天性心脏病", "房间隔缺损", "室间隔缺损", "动脉导管未闭",
+        "法洛四联症", "法洛", "肺动脉狭窄", "主动脉缩窄", "大动脉转位",
+        "PDA", "VSD", "ASD", "卵圆孔未闭", "肺动脉高压",
+        "三尖瓣反流", "二尖瓣反流", "右位心", "完全性肺静脉异位引流",
+        "永存左上腔静脉", "主动脉弓缩窄", "主动脉弓离断"
+      ],
+      "exclude_attitudes": ["suspected", "negated"],
+      "exclude_modifiers": ["post_op"],
+      "tier2_forms": ["卵圆孔未闭"],
+      "notes": "PDA in premature neonates is very common; tier1 by default. Post-op PDA not counted as active CHD."
+    },
+    "preterm_lbw": {
+      "icd10": "P05,P07",
+      "surface_forms": [
+        "早产", "早产儿", "适于胎龄早产儿", "小于胎龄早产儿", "大于胎龄早产儿",
+        "超早早产儿", "超早产儿", "低出生体重儿", "低出生体重",
+        "极低出生体重儿", "极低出生体重", "超低出生体重儿", "超低出生体重",
+        "足月小样儿", "足月小样", "小于胎龄儿", "大于胎龄儿"
+      ],
+      "exclude_attitudes": ["negated"]
+    },
+    "sepsis": {
+      "icd10": "P36",
+      "surface_forms": [
+        "败血症", "新生儿败血症", "脓毒症", "脓毒血症", "菌血症",
+        "宫内感染", "新生儿宫内感染", "化脓性脑膜炎", "新生儿脑膜炎"
+      ],
+      "exclude_attitudes": ["suspected", "negated"],
+      "notes": "宫内感染 included as proxy for early-onset sepsis"
+    },
+    "rds": {
+      "icd10": "P22",
+      "surface_forms": [
+        "呼吸窘迫综合征", "新生儿呼吸窘迫综合征", "RDS",
+        "肺透明膜病", "hyaline membrane disease"
+      ],
+      "exclude_attitudes": ["suspected", "negated"],
+      "notes": "TTN/湿肺 NOT included - separate entity"
+    },
+    "pneumonia": {
+      "icd10": "P23,J12-J18",
+      "surface_forms": [
+        "肺炎", "新生儿肺炎", "宫内感染性肺炎", "先天性肺炎",
+        "吸入性肺炎", "新生儿吸入性肺炎", "新生儿宫内感染性肺炎",
+        "支气管肺炎", "大叶性肺炎", "胎粪吸入综合征",
+        "新生儿胎粪吸入综合征"
+      ],
+      "exclude_attitudes": ["suspected", "negated"]
+    }
+  },
+  "severity_indicators": {
+    "severe_morbidity_keywords": [
+      "呼吸衰竭", "心力衰竭", "心衰", "休克", "MODS",
+      "多器官功能衰竭", "多器官", "脓毒性休克", "昏迷",
+      "弥漫性血管内凝血", "DIC", "肺出血", "多器官功能障碍"
+    ]
+  },
+  "attitude_keywords": {
+    "suspected": ["待查", "待排", "可能", "疑似", "不能排除", "考虑", "不排除"],
+    "negated": ["排除", "否认", "否", "非"],
+    "post_op": ["术后", "结扎术后", "已关闭", "已封堵"]
+  },
+  "severity_grading": {
+    "patterns": ["重度", "轻度", "中度", "Ⅰ型", "Ⅱ型", "Ⅲ型", "I型", "II型", "III型", "IV型",
+                  "I期", "II期", "III期", "IV期", "Ⅰ期", "Ⅱ期", "Ⅲ期", "I度", "II度", "III度",
+                  "1区", "2区", "3区", "II孔型", "Ⅱ孔型"]
+  },
+  "anatomical_laterality": {
+    "patterns": ["左侧", "右侧", "双侧", "左", "右", "双"]
+  },
+  "other_common_diagnoses": {
+    "respiratory": ["新生儿湿肺", "新生儿原发性呼吸暂停", "呼吸暂停", "气胸", "肺出血", "支气管肺发育不良", "BPD"],
+    "neurological": ["新生儿颅内出血", "颅内出血", "脑室周围白质软化", "新生儿窒息", "HIE", "缺氧缺血性脑病", "脑室内出血", "脑损伤"],
+    "metabolic": ["新生儿低血糖症", "新生儿低血糖", "低钙血症", "低钠血症", "低镁血症", "代谢性酸中毒", "高钾血症", "低钾血症"],
+    "hematological": ["新生儿贫血", "血小板减少", "凝血功能障碍", "红细胞增多症", "双胎输血综合征"],
+    "gastrointestinal": ["新生儿坏死性小肠结肠炎", "NEC", "新生儿肠炎", "喂养不耐受", "消化道出血", "上消化道出血", "肠胀气"],
+    "ophthalmological": ["早产儿视网膜病变", "ROP", "眼底出血"],
+    "maternal_related": ["糖尿病母亲的婴儿综合征", "母亲伴有妊娠糖尿病的婴儿综合征", "巨大儿"],
+    "other": ["高危儿", "新生儿挤压伤", "头颅血肿", "头皮水肿", "头皮血肿", "试管婴儿", "双胎之大", "双胎之小", "三胎之一"]
+  }
+}
