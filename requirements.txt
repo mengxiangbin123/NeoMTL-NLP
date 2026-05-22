@@ -1,0 +1,17 @@
+# Core dependencies (rule-based fallback path)
+pandas>=1.5
+numpy>=1.23
+
+# Optional — for LLM-based extraction
+# Uncomment ONE of the two backends below depending on your setup.
+
+# (a) Local inference with Hugging Face transformers
+# transformers>=4.40
+# torch>=2.0
+# accelerate>=0.30
+
+# (b) Anthropic API
+# anthropic>=0.30
+
+# (c) OpenAI API
+# openai>=1.30
